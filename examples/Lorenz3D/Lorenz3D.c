@@ -1,7 +1,5 @@
-#include "../../gbees.c"
-
-#define DIM_f 3 // State dimension
-#define DIM_h 1 // Measurement dimension
+#include "../../gbees.h" // REF- do not include c files
+#include "Lorenz3D.h"
 
 // This function defines the dynamics model - required
 void Lorenz3D(double* f, double* x, double* dx, double* coef){
@@ -19,7 +17,7 @@ int main(){
     //=================================== Read in initial discrete measurement =================================//
     printf("Reading in initial discrete measurement...\n\n");
 
-    char* P_DIR = "<path_to_pdf>";     // Saved PDFs path
+    char* P_DIR = "./results";     // Saved PDFs path  // REF- Convention over Configuration (CoC)
     char* M_DIR = "./measurements";    // Measurement path
     char* M_FILE = "measurement0.txt"; // Measurement file
     Meas M = Meas_create(DIM_f, M_DIR, M_FILE);
@@ -42,7 +40,7 @@ int main(){
     int DEL_STEP = 20;                             // Number of steps per deletion procedure
     int OUTPUT_FREQ = 20;                          // Number of steps per output to terminal
     bool OUTPUT = true;                            // Write info to terminal
-    bool RECORD = false;                           // Write PDFs to .txt file
+    bool RECORD = true;                           // Write PDFs to .txt file // REF- Convention over Configuration (CoC)
     bool MEASURE = true;                           // Take discrete measurement updates
     bool BOUNDS = false;                           // Add inadmissible regions to grid
     //==========================================================================================================//

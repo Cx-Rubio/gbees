@@ -1,0 +1,23 @@
+# Object files
+*.o
+
+# Shared libraries
+*.so
+
+# Result folders
+examples/Lorenz3D/results
+examples/CR3BP/results
+examples/PCR3BP/results
+
+# Executables
+examples/CR3BP/CR3BP
+examples/Lorenz3D/Lorenz3D
+examples/PCR3BP/PCR3BP
+
+# IDE files
+.codelite
+gbees.workspace
+compile_flags.txt
+
+# Python cache
+__pycache__

@@ -27,7 +27,7 @@ def CR3BP_J(x, coef):
 #==================================== Read in initial discrete measurement ==================================#
 print("Reading in initial discrete measurement...\n")
 
-P_DIR = "<path_to_pdf>"      # Saved PDFs path
+P_DIR = "./results"          # Saved PDFs path // REF- Convention over Configuration (CoC)
 M_DIR = "./measurements"     # Measurement path
 M_FILE = "measurement0.txt"; # Measurement file
 M = gbees.Meas_create(DIM_f, M_DIR, M_FILE)
@@ -49,7 +49,7 @@ NUM_MEAS = 4;                                 # Number of measurements
 DEL_STEP = 20;                                # Number of steps per deletion procedure
 OUTPUT_FREQ = 20;                             # Number of steps per output to terminal
 OUTPUT = False;                               # Write info to terminal
-RECORD = False;                                # Write PDFs to .txt file
+RECORD = True;                                # Write PDFs to .txt file // REF- Convention over Configuration (CoC)
 MEASURE = False;                              # Take discrete measurement updates
 BOUNDS = True;                                # Add inadmissible regions to grid
 #============================================================================================================#
