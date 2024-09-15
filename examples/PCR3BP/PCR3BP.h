@@ -1,3 +1,5 @@
+#ifndef PCR3BP_H
+#define PCR3BP_H
 
 #define DIM_f 4 // State dimension
 #define DIM_h 3 // Measurement dimension
@@ -11,3 +13,4 @@ void rtrr(double* h, double* x, double* dx, double* coef);
 // This function defines the initial grid boundaries - optional
 double PCR3BP_J(double* x, double* coef);
 
+#endif

@@ -6,10 +6,13 @@
 
 CC=gcc
 
+# DEBUG
+#CFLAGS=-pedantic -Wall -std=c99 -D_GNU_SOURCE -static -g
+
+# RELEASE
 CFLAGS=-pedantic -Wall -std=c99 -D_GNU_SOURCE -fPIC
 
-# remove -g for release version, and add -DRELEASE
-LDFLAGS=-DRELEASE
+LDFLAGS=
 LDLIBS=-lm
 
 SRCS = $(wildcard *.c) $(wildcard ../../*.c)

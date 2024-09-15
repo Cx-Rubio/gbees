@@ -1,3 +1,6 @@
+#ifndef GBEES_H
+#define GBEES_H
+
 #include <stdint.h>
 #include <math.h>
 #include <stdio.h>
@@ -174,5 +177,4 @@ void meas_up_recursive(void (*h)(double*, double*, double*, double*), TreeNode* 
 
 void run_gbees(void (*f)(double*, double*, double*, double*), void (*h)(double*, double*, double*, double*), double (*BOUND_f)(double*, double*), Grid G, Meas M, Traj T, char* P_DIR, char* M_DIR, int NUM_DIST, int NUM_MEAS, int DEL_STEP, int OUTPUT_FREQ, int DIM_h, bool OUTPUT, bool RECORD, bool MEASURE, bool BOUNDS);
 
-
-
+#endif
