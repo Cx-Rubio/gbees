@@ -1,5 +1,9 @@
+// Lorenz3D.c, https://github.com/bhanson10/gbees/tree/main/examples/Lorenz3D
+// Copyright 2024 by Benjamin Hanson, published under BSD 3-Clause License.
+
 #include "../../gbees.h" // REF- do not include c files
 #include "Lorenz3D.h"
+
 
 // This function defines the dynamics model - required
 void Lorenz3D(double* f, double* x, double* dx, double* coef){
