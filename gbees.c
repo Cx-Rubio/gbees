@@ -169,6 +169,7 @@ TreeNode* TreeNode_create(int dim, uint64_t key, double prob, int* state, double
         node->k_nodes[i] = NULL;
     }
     node->new_f = 0; 
+    node->ik_f = 0; 
     node->bound_val = J; 
     node->left = NULL; 
     node->right = NULL; 
