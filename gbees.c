@@ -334,6 +334,7 @@ double gauss_probability(int dim, double* x, Meas M){ // MC Calculate gaussian p
     for(int i = 0; i < dim; i++){
         diff[i] = x[i] - M.mean[i]; 
     }
+
     inv_mat(M.cov, M_inv, dim);
     mul_mat_vec(M_inv, diff, M_inv_x, dim);
     double dot_prod = dot_product(diff, M_inv_x, dim);
@@ -624,6 +625,7 @@ void normalize_tree(TreeNode* P, Grid* G, uint64_t* max_key, int* a_count, int* 
     *max_key = 0; *a_count = 0; *tot_count = 0; 
     double prob_sum = 0;
     get_sum(P, &prob_sum);
+    //printf("prob sum %1.14e\n", prob_sum);
     divide_sum(P, prob_sum, G, max_key, a_count, tot_count);
 }
 
@@ -1121,7 +1123,7 @@ void meas_up_recursive(void (*h)(double*, double*, double*, double*), TreeNode* 
 
     double y[M.dim];
     (*h)(y, x, G.dx, T.coef); 
-
+    
     double prob = gauss_probability(M.dim, y, M);   
     r->prob *= prob;
 }
@@ -1164,9 +1166,11 @@ void run_gbees(void (*f)(double*, double*, double*, double*), void (*h)(double*,
                 update_prob(P, G);
                 normalize_tree(P, &G, &max_key, &a_count, &tot_count); 
 
-                if (step_count % DEL_STEP == 0) { // deletion procedure
+                //printf("step duration %f, active cells %d\n", G.dt, tot_count);
+                
+                if (step_count % DEL_STEP == 0) { // deletion procedure                
                     prune_tree(&P, G, tot_count);
-                    normalize_tree(P, &G, &max_key, &a_count, &tot_count); 
+                    normalize_tree(P, &G, &max_key, &a_count, &tot_count);                
                 }
 
                 if ((OUTPUT) && (step_count % OUTPUT_FREQ == 0)) { // print size to terminal
@@ -1187,8 +1191,7 @@ void run_gbees(void (*f)(double*, double*, double*, double*), void (*h)(double*,
                 record_data(P, P_PATH, G, tt + mt + rt);
                 record_count += 1;
                 free(P_PATH);
-            }
-
+            }            
             mt += rt;
         }
 
